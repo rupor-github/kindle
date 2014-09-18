@@ -1,0 +1,16 @@
+--- eglibc-2_12.orig/sunrpc/Makefile
++++ eglibc-2_12/sunrpc/Makefile
+@@ -144,11 +144,11 @@
+ 	$(+link)
+ 
+ $(addprefix $(objpfx)cross-,$(rpcgen-objs)): $(objpfx)cross-%.o: %.c
+-	gcc $< -c -D_RPC_THREAD_SAFE_ -D_CROSS_RPCGEN_ \
++	gcc $< -I. -c -D_RPC_THREAD_SAFE_ -D_CROSS_RPCGEN_ \
+ 		$(OUTPUT_OPTION) $(compile-mkdep-flags)
+ 
+ $(objpfx)cross-rpcgen: $(addprefix $(objpfx)cross-,$(rpcgen-objs))
+-	gcc $^ -o $@
++	gcc $^ -o $@ -lintl
+ 
+ # This makes sure -DNOT_IN_libc is passed for all these modules.
+ cpp-srcs-left := $(rpcgen-objs:.o=.c)

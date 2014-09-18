@@ -1,0 +1,11 @@
+--- eglibc-2_12.orig/timezone/Makefile
++++ eglibc-2_12/timezone/Makefile
+@@ -185,7 +185,7 @@
+ 		-DCROSS_ZIC $(compile-mkdep-flags)
+ 
+ $(objpfx)cross-zic: $(addprefix $(objpfx)cross-,$(zic-objs))
+-	gcc $(addprefix $(objpfx)cross-,$(zic-objs)) -o $@
++	gcc $(addprefix $(objpfx)cross-,$(zic-objs)) -o $@ -lintl
+ 
+ tz-cflags = -DTZDIR='"$(zonedir)"' \
+ 	    -DTZDEFAULT='"$(localtime-file)"' \

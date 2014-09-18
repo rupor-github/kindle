@@ -1,0 +1,19 @@
+--- gcc-linaro-4.9-2014.08/libgcc.orig/configure
++++ gcc-linaro-4.9-2014.08/libgcc/configure
+@@ -3386,15 +3386,7 @@
+ }
+ _ACEOF
+ # FIXME: Cleanup?
+-if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_link\""; } >&5
+-  (eval $ac_link) 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; then :
+-  gcc_no_link=no
+-else
+-  gcc_no_link=yes
+-fi
++gcc_no_link=yes
+ if test x$gcc_no_link = xyes; then
+   # Setting cross_compile will disable run tests; it will
+   # also disable AC_CHECK_FILE but that's generally
