@@ -1,0 +1,28 @@
+diff -dur src.orig/cmd/ld/lib.c src/cmd/ld/lib.c
+--- src.orig/cmd/ld/lib.c	2014-08-12 23:49:45.000000000 -0400
++++ src/cmd/ld/lib.c	2014-09-17 19:26:23.357250300 -0400
+@@ -144,6 +144,10 @@
+ void
+ errorexit(void)
+ {
++	// You cannot remove file on Windows unless it is closed, and unless it is removed
++	// atexit(removeall) will leave temporary directory behind
++	if(cout >= 0)
++		close(cout);
+ 	if(nerrors) {
+ 		if(cout >= 0)
+ 			mayberemoveoutfile();
+diff -dur src.orig/lib9/tempdir_windows.c src/lib9/tempdir_windows.c
+--- src.orig/lib9/tempdir_windows.c	2014-08-12 23:49:43.000000000 -0400
++++ src/lib9/tempdir_windows.c	2014-09-17 19:25:45.192887900 -0400
+@@ -89,10 +89,12 @@
+ 	if(h == INVALID_HANDLE_VALUE)
+ 		goto done;
+ 	do{
+-		q = toutf(data.cFileName);
++		char *qt = toutf(data.cFileName);
++		q = smprint("%s\\%s", p, qt);
++		free(qt);
+ 		elem = strrchr(q, '\\');
+ 		if(elem != nil) {
+ 			if(strcmp(elem, ".") == 0 || strcmp(elem, "..") == 0) {
