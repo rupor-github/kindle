@@ -1,10 +1,10 @@
 # Kindle PW2 related (experimental and probably temporary)
 ======
 
-## I do programing on Windows (64 bits), so this work may help you to setup cross environment for Go language **targetting Kindle PW2**, including complete usage of *cgo*.
+### I use Windows (64 bits) for my daily routines and this work may help you to setup cross environment for Go language *targeting Kindle PW2*, including complete usage of *cgo*.
 
-* *go_1.3.1* contains command files to setup cross compilation environment to build *Go* itself. 
-* *cross* has self extracting archive with complete build of Linaro 20140811 toolchain tuned for Kindle PW2 (eglibc 2.12, binutils 2.24, etc) hosted on Windows 64 bits.
+* **go_1.3.1** contains command files to setup cross compilation environment to build *Go* itself. 
+* **cross** has self extracting archive with build of Linaro 20140811 toolchain tuned for Kindle PW2 (eglibc 2.12, binutils 2.24, etc) hosted on Windows 64 bits.
 
 In order to have full working Go on Windows 64 bits, targeting **Windows 32/64 bits and Linux ARM** you will need to obtain and setup following tools:
 
