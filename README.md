@@ -29,7 +29,7 @@ GOTOOLS
 ```
 
 Download and unpack [Go 1.3.1 source distribution](https://storage.googleapis.com/golang/go1.3.1.src.tar.gz). 
-Apply `go_131_windows.patch` to sources (Patch [description](https://code.google.com/p/go/issues/detail?id=8723)) using regular patch tools.
+Apply [`go_131_windows.patch`](https://github.com/rupor-github/kindle/blob/master/go_1.3.1/go_131_windows.patch) to sources (Patch [description](https://code.google.com/p/go/issues/detail?id=8723)) using regular patch tools.
 
 Now let's assume you have it in `c:\go` and my command files and necessary tools in `c:\gotools`. 
 Then issuing following commands will build development environment:
