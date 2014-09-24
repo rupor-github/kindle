@@ -1,0 +1,23 @@
+﻿********************************************************************************
+mingw64 hosted Linaro 20140811 compiler with eglibc 2.12 (built with cygwin 64)
+********************************************************************************
+
+binutils 2.24
+cloog 0.18.1
+eglibc 2.12 (MIN_KERNEL_VERSION="2.6.31")
+gmp 6.0.0a
+isl 0.12.2
+linux 2.6.32.63
+mpc 1.0.2
+mpfr 3.1.2
+
+********************************************************************************
+arm-mingw_kpw-linux-gnueabi
+********************************************************************************
+Using built-in specs.
+COLLECT_GCC=D:\gotools\armkpw\bin\arm-mingw_kpw-linux-gnueabi-gcc.exe
+COLLECT_LTO_WRAPPER=d:/gotools/armkpw/bin/../libexec/gcc/arm-mingw_kpw-linux-gnueabi/4.8.4/lto-wrapper.exe
+Target: arm-mingw_kpw-linux-gnueabi
+Configured with: /home/rupor/crosstool-ng/.build/src/gcc-linaro-4.8-2014.08/configure --build=x86_64-build_pc-cygwin --host=x86_64-host_w64-mingw32 --target=arm-mingw_kpw-linux-gnueabi --prefix=/home/rupor/x-tools/arm-mingw_kpw-linux-gnueabi --with-sysroot=/home/rupor/x-tools/arm-mingw_kpw-linux-gnueabi/arm-mingw_kpw-linux-gnueabi/sysroot --enable-languages=c,c++ --with-cpu=cortex-a8 --with-tune=cortex-a8 --with-fpu=neon --with-float=softfp --with-pkgversion='crosstool-NG 1.20.0 - rupor' --with-bugurl=http://i1.kym-cdn.com/entries/icons/original/000/002/869/last-page-of-the-internet.jpg --disable-sjlj-exceptions --enable-__cxa_atexit --disable-libmudflap --disable-libgomp --disable-libssp --disable-libquadmath --disable-libquadmath-support --disable-libsanitizer --with-gmp=/home/rupor/crosstool-ng/.build/arm-mingw_kpw-linux-gnueabi/buildtools/complibs-host --with-mpfr=/home/rupor/crosstool-ng/.build/arm-mingw_kpw-linux-gnueabi/buildtools/complibs-host --with-mpc=/home/rupor/crosstool-ng/.build/arm-mingw_kpw-linux-gnueabi/buildtools/complibs-host --with-isl=/home/rupor/crosstool-ng/.build/arm-mingw_kpw-linux-gnueabi/buildtools/complibs-host --with-cloog=/home/rupor/crosstool-ng/.build/arm-mingw_kpw-linux-gnueabi/buildtools/complibs-host --with-libelf=/home/rupor/crosstool-ng/.build/arm-mingw_kpw-linux-gnueabi/buildtools/complibs-host --enable-lto --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --enable-threads=posix --disable-libstdcxx-pch --without-long-double-128 --enable-linker-build-id --with-linker-hash-style=gnu --enable-gold --disable-nls --disable-multilib --with-local-prefix=/home/rupor/x-tools/arm-mingw_kpw-linux-gnueabi/arm-mingw_kpw-linux-gnueabi/sysroot --enable-c99 --enable-long-long
+Thread model: posix
+gcc version 4.8.4 20140811 (prerelease) (crosstool-NG 1.20.0 - rupor) 

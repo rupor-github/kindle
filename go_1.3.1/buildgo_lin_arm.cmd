@@ -5,10 +5,10 @@ set GOROOT=d:\go
 set GOPATH=%CD%
 set _TOOLS=%~dp0
 
-set CC=arm-mingw_kpw2-linux-gnueabi-gcc.exe
-set CXX=arm-mingw_kpw2-linux-gnueabi-g++.exe
+set CC=arm-mingw_kpw-linux-gnueabi-gcc.exe
+set CXX=arm-mingw_kpw-linux-gnueabi-g++.exe
 
-set INSTROOT=%_TOOLS%armkpw2
+set INSTROOT=%_TOOLS%armkpw
 set PKG_CONFIG_LIBDIR=
 
 set CGO_ENABLED=1

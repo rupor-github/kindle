@@ -1,4 +1,4 @@
-# Kindle PW2 related (experimental and probably temporary)
+# Kindle PW(1/2) related (experimental and probably temporary)
 ======
 
 ### I use Windows (64 bits) for my daily routines and this work may help you to setup cross environment for Go language *targeting Kindle PW2*, including complete usage of *cgo*.
@@ -9,7 +9,7 @@
 In order to have full working Go on Windows 64 bits, targeting **Windows 32/64 bits and Linux ARM** you will need to obtain and setup following tools:
 
 * [mingw compilers for 32 and 64 bits](http://win-builds.org) 
-* [mingw64 hosted cross-compiler for arm](https://github.com/rupor-github/kindle/blob/master/cross/) (armkpw2.exe is RAR5 based self-extracting archive - *note* that self extractor will need to create symbolic links, so it has to be run with admin privileges!)
+* [mingw64 hosted cross-compiler for arm](https://github.com/rupor-github/kindle/blob/master/cross/) (armkpw.exe is RAR5 based self-extracting archive - *note* that self extractor will need to create symbolic links, so it has to be run with admin privileges!)
 * [Git](http://msysgit.github.com)
 * [SVN](http://www.sliksvn.com)
 * [Mercurial](http://mercurial.selenic.com)
@@ -19,7 +19,7 @@ My command files assume that all of the above has been installed under single di
 ```
 GOTOOLS
 |
-+---armkpw2
++---armkpw
 +---Bazaar
 +---Git
 +---Mercurial

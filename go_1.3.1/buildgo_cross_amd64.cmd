@@ -77,7 +77,7 @@ goto fin
 :linarm
 
 title amd64 Cross for %1 %2
-set INSTROOT_FOR_TARGET=%_TOOLS%armkpw2
+set INSTROOT_FOR_TARGET=%_TOOLS%armkpw
 
 set GOOS=linux
 set GOARCH=arm
@@ -88,8 +88,8 @@ set CXX=g++.exe
 set PKG_CONFIG_LIBDIR=%INSTROOT%\lib64\pkgconfig
 set PATH=%CROSS_SAVE_PATH%;%INSTROOT%\bin
 
-set CC_FOR_TARGET=arm-mingw_kpw2-linux-gnueabi-gcc.exe
-set CXX_FOR_TARGET=arm-mingw_kpw2-linux-gnueabi-g++.exe
+set CC_FOR_TARGET=arm-mingw_kpw-linux-gnueabi-gcc.exe
+set CXX_FOR_TARGET=arm-mingw_kpw-linux-gnueabi-g++.exe
 set PKG_CONFIG_LIBDIR_FOR_TARGET=
 set PATH_FOR_TARGET=%CROSS_SAVE_PATH%;%INSTROOT_FOR_TARGET%\bin
 

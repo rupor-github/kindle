@@ -1,7 +1,7 @@
 @echo OFF
 
 set _TOOLS=%~dp0
-set INSTROOT=%_TOOLS%armkpw2
+set INSTROOT=%_TOOLS%armkpw
 set GOHOSTOS=linux
 set GOHOSTARCH=arm
 
@@ -35,8 +35,8 @@ set GOOS=windows
 set GOARCH=amd64
 set CGO_ENABLED=1
 
-set CC=arm-mingw_kpw2-linux-gnueabi-gcc.exe
-set CXX=arm-mingw_kpw2-linux-gnueabi-g++.exe
+set CC=arm-mingw_kpw-linux-gnueabi-gcc.exe
+set CXX=arm-mingw_kpw-linux-gnueabi-g++.exe
 set PKG_CONFIG_LIBDIR=%INSTROOT%\lib\pkgconfig
 set PATH=%CROSS_SAVE_PATH%;%INSTROOT%\bin
 
@@ -59,8 +59,8 @@ set GOOS=windows
 set GOARCH=386
 set CGO_ENABLED=1
 
-set CC=arm-mingw_kpw2-linux-gnueabi-gcc.exe
-set CXX=arm-mingw_kpw2-linux-gnueabi-g++.exe
+set CC=arm-mingw_kpw-linux-gnueabi-gcc.exe
+set CXX=arm-mingw_kpw-linux-gnueabi-g++.exe
 set PKG_CONFIG_LIBDIR=%INSTROOT%\lib\pkgconfig
 set PATH=%CROSS_SAVE_PATH%;%INSTROOT%\bin
 
@@ -77,7 +77,7 @@ goto fin
 :linarm
 
 title arm Cross for %1 %2
-set INSTROOT_FOR_TARGET=%_TOOLS%armkpw2
+set INSTROOT_FOR_TARGET=%_TOOLS%armkpw
 
 set GOOS=linux
 set GOARCH=arm
