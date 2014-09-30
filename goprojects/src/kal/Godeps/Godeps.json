@@ -1,0 +1,14 @@
+{
+	"ImportPath": "kal",
+	"GoVersion": "go1.3.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/mattn/go-sqlite3",
+			"Rev": "a80c27ba3354e27b4c8dfbbd1165bc253ca7c522"
+		},
+		{
+			"ImportPath": "github.com/twinj/uuid",
+			"Rev": "4d772442af203e27723acc7d1eea6c93cd319c57"
+		}
+	]
+}
