@@ -3,20 +3,25 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"log/syslog"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
 const (
-	dbDSNro = "file:/var/local/cc.db?cache=shared&mode=ro"
-	dbDSNrw = "file:/var/local/cc.db?cache=shared&mode=rw"
-	dbPath  = "/mnt/us/documents/mybooks/"
-	fsPath  = "/mnt/us/documents/mybooks/"
+	dsnPattern = "file:%s?cache=shared&mode=%s"
 )
 
-var locale string = "en_US"
+var (
+	dbDSNro string
+	dbDSNrw string
+	dbPath  string
+	fsPath  string
+	locale  = "en_US"
+)
 
 func init() {
 	// See if we could make sense of current locale
@@ -27,6 +32,15 @@ func init() {
 			locale = l
 		}
 	}
+
+	dbDSNro = fmt.Sprintf(dsnPattern, "/var/local/cc.db", "ro")
+	dbDSNrw = fmt.Sprintf(dsnPattern, "/var/local/cc.db", "rw")
+
+	dbPath = filepath.Join("/mnt/us/documents", config.RelRoot)
+	if !strings.HasSuffix(dbPath, string(os.PathSeparator)) {
+		dbPath = dbPath + string(os.PathSeparator)
+	}
+	fsPath = dbPath
 }
 
 func prepareLog() {

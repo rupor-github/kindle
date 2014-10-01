@@ -19,8 +19,6 @@ var firstRun bool
 type book struct {
 	uuid        string
 	location    string
-	cdekey      string
-	cdetype     string
 	collections map[string]*collection
 }
 
@@ -76,7 +74,7 @@ func writeDB(collections []collection) (err error) {
 		if _, err = tx.Exec("CREATE TABLE IF NOT EXISTS Autolists (uuid PRIMARY KEY NOT NULL UNIQUE, label, path, time)"); err == nil {
 			if _, err = tx.Exec("DELETE FROM Autolists"); err == nil {
 				for _, c := range collections {
-					// path and time are not currently used, but may become useful if and when I decide to optimize
+					// path and time are not currently used, but may become useful if and when I decide to really optimize
 					_, err = tx.Exec(fmt.Sprintf("INSERT INTO Autolists(uuid, label, path, time) VALUES (\"%s\",\"%s\",\"%s\",\"%d\")", c.uuid, c.label, dbPath, now))
 					if err != nil {
 						break
@@ -169,7 +167,7 @@ func readDB() (collectionsOld map[string]string, collections []collection, books
 			var u, l string
 			var k, t sql.NullString
 			if err = rows.Scan(&u, &l, &k, &t); err == nil {
-				books[acc] = book{uuid: u, location: l, cdekey: k.String, cdetype: t.String, collections: make(map[string]*collection)}
+				books[acc] = book{uuid: u, location: l, collections: make(map[string]*collection)}
 			}
 			return
 		}); err != nil {
@@ -201,7 +199,7 @@ func readDeviceFolders() (files map[string]string, err error) {
 		if err1 == nil && !info.IsDir() {
 			dir, file := filepath.Split(path)
 			if strings.HasPrefix(dir, fsPath) {
-				if rel := strings.TrimPrefix(dir, fsPath); len(rel) > 0 {
+				if rel := strings.TrimPrefix(dir, fsPath); len(rel) > 0 && !strings.HasPrefix(rel, "dictionaries") {
 					if accepted, supported := exts[strings.ToLower(filepath.Ext(file))]; supported && accepted {
 						files[file] = strings.TrimSuffix(filepath.ToSlash(rel), "/")
 					}
@@ -222,7 +220,7 @@ var help bool
 var action string
 
 func init() {
-	flag.StringVar(&action, "action", "sync", "action to perform: sync|clean")
+	flag.StringVar(&action, "action", "sync", "action to perform: sync|clean|none")
 	flag.BoolVar(&verbose, "verbose", false, "print additional information")
 	flag.BoolVar(&debug, "debug", false, "save JSON request to file, do not update database, do not write to syslog")
 	flag.BoolVar(&help, "help", false, "print help information")
@@ -234,7 +232,7 @@ func main() {
 	start := time.Now()
 
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "\nKindle auto-collections tool\nVersion 1.0\n\n")
+		fmt.Fprintf(os.Stderr, "\nKindle auto-lists tool (rupor)\nVersion 0.1\n\n")
 		fmt.Fprintf(os.Stderr, "Usage: %s [options]\n\n", os.Args[0])
 		flag.PrintDefaults()
 		fmt.Fprintf(os.Stderr, "\n")
@@ -244,8 +242,13 @@ func main() {
 		action = ""
 	}
 
-	// this neeeds to happen after we have command line arguments
+	// this neeeds to happen after we have command line arguments, but before anything else
 	prepareLog()
+
+	// See if we are allowed to proceed
+	if config.NotActive {
+		action = "none"
+	}
 
 	// Make sure only one instance of this program is running at the time
 	lock := filepath.Join(os.TempDir(), "kal_lock")
@@ -261,6 +264,9 @@ func main() {
 	default:
 		flag.Usage()
 		os.Exit(1)
+
+	case "none":
+		log.Print("Actions are disabled via configuration file. Doing nothing...")
 
 	case "clean":
 		log.Print("Removing ALL existing collections and cleaning database")
@@ -286,7 +292,7 @@ func main() {
 		}
 
 	case "sync":
-		log.Print("Syncing collections with folders")
+		log.Printf("Syncing collections with folders [%s]", fsPath)
 
 		// Get all necessary information
 		collectionsOurs, collections, books, err := readDB()
@@ -322,7 +328,7 @@ func main() {
 		uuid.SwitchFormat(uuid.CleanHyphen)
 		for file, label := range files {
 			if i := findBook(books, func(b *book) bool { return b.location == filepath.ToSlash(filepath.Join(dbPath, label, file)) }); i < 0 {
-				log.Printf("Invalid location for: %s", file)
+				log.Printf("Invalid location for: %s, ignoring", file)
 			} else {
 				j := findCollection(collectionsNew, func(c *collection) bool { return c.label == label })
 				if j < 0 {
