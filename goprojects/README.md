@@ -39,7 +39,7 @@ You could use "showlog | grep KAL" to see what it does.
 * notActive - if true, program will immediately exit. This allows user to stop synchronizing folders without editing /etc/lipc-daemon-events.conf
 
 ### Performance
-Currently it takes program Kindle CCAL about 4 seconds to update ~30 collections with ~100 books:
+Currently it takes Kindle CCAL about 4 seconds to update ~30 collections with ~100 books:
 ```
 141001:123627 KAL[14038]: 2014/10/01 12:36:27 Syncing collections with folders [/mnt/us/documents/mybooks/]
 141001:123627 KAL[14038]: 2014/10/01 12:36:27 Sending commands, 157.578958ms
