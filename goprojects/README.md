@@ -41,10 +41,10 @@ You could use "showlog | grep KAL" to see what it does.
 ### Performance
 Currently it takes Kindle CCAL about 4 seconds to update ~30 collections with ~100 books:
 ```
-141001:123627 KAL[14038]: 2014/10/01 12:36:27 Syncing collections with folders [/mnt/us/documents/mybooks/]
-141001:123627 KAL[14038]: 2014/10/01 12:36:27 Sending commands, 157.578958ms
-141001:123631 KAL[14038]: 2014/10/01 12:36:31 Processed - 178 changes...
-141001:123631 KAL[14038]: 2014/10/01 12:36:31 Done..., 3.41513809s
+141002:185358 KAL[12302]: 2014/10/02 18:53:58 Syncing collections with folders [/mnt/us/documents/mybooks/]
+141002:185359 KAL[12302]: 2014/10/02 18:53:59 Sending 179 commands, 140.092792ms
+141002:185401 KAL[12302]: 2014/10/02 18:54:01 Processed - 179 changes...
+141002:185402 KAL[12302]: 2014/10/02 18:54:02 Done..., 3.82349459s
 ```
 I would not expect this to work for librarians with thousands of books on devices...
 

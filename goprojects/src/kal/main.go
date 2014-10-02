@@ -227,8 +227,6 @@ func init() {
 }
 
 func main() {
-	var err error
-
 	start := time.Now()
 
 	flag.Usage = func() {
@@ -289,6 +287,9 @@ func main() {
 			if err == nil {
 				err = cleanDB()
 			}
+		}
+		if err != nil {
+			log.Fatal(err)
 		}
 
 	case "sync":
@@ -358,10 +359,9 @@ func main() {
 				err = writeDB(collectionsNew)
 			}
 		}
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
-	if err != nil {
-		log.Fatal(err)
-	} else {
-		log.Printf("Done..., %s", time.Since(start))
-	}
+	log.Printf("Done..., %s", time.Since(start))
 }

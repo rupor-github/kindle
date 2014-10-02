@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -102,7 +103,6 @@ type Response struct {
 	Type    string `json:"type"`
 	Changes int    `json:"changes"`
 	ID      int    `json:"id"`
-	Error   string `json:"Error"`
 }
 
 func (q *Queue) Size() int {
@@ -117,17 +117,12 @@ func (q *Queue) Execute() (err error) {
 				if resp.StatusCode != http.StatusOK {
 					err = errors.New("HTTP status is not OK")
 				} else {
-					if verbose {
-						log.Printf("Response %s", body)
-					}
 					var res Response
 					err = json.Unmarshal(body, &res)
-					if err == nil {
-						if res.Ok && len(res.Error) == 0 {
-							log.Printf("Processed - %d changes...\n", res.Changes)
-						} else {
-							err = errors.New(res.Error)
-						}
+					if err == nil && res.Ok {
+						log.Printf("Processed - %d changes...\n", res.Changes)
+					} else {
+						err = errors.New(fmt.Sprintf("Error - <%s>", body))
 					}
 				}
 			}
