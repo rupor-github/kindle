@@ -280,7 +280,7 @@ func main() {
 			q.DeleteCollection(c.uuid)
 		}
 
-		log.Printf("Sending commands, %s", time.Since(start))
+		log.Printf("Sending %d commands, %s", q.Size(), time.Since(start))
 		if debug {
 			err = q.Dump()
 		} else {
@@ -347,7 +347,7 @@ func main() {
 			q.UpdateBook(b.uuid, len(b.collections))
 		}
 
-		log.Printf("Sending commands, %s", time.Since(start))
+		log.Printf("Sending %d commands, %s", q.Size(), time.Since(start))
 		if debug {
 			err = q.Dump()
 		} else {

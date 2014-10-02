@@ -105,6 +105,10 @@ type Response struct {
 	Error   string `json:"Error"`
 }
 
+func (q *Queue) Size() int {
+	return len(q.Commands)
+}
+
 func (q *Queue) Execute() (err error) {
 	if b, err := json.Marshal(q); err == nil {
 		if resp, err := http.Post("http://localhost:9101/change", "application/json", bytes.NewBuffer(b)); err == nil {
