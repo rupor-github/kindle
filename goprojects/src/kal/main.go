@@ -215,13 +215,11 @@ func readDeviceFolders() (files map[string]string, err error) {
 }
 
 var debug bool
-var verbose bool
 var help bool
 var action string
 
 func init() {
 	flag.StringVar(&action, "action", "sync", "action to perform: sync|clean|none")
-	flag.BoolVar(&verbose, "verbose", false, "print additional information")
 	flag.BoolVar(&debug, "debug", false, "save JSON request to file, do not update database, do not write to syslog")
 	flag.BoolVar(&help, "help", false, "print help information")
 }

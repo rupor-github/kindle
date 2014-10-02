@@ -31,7 +31,6 @@ You could use "showlog | grep KAL" to see what it does.
 
 * -action=sync|clean where "clean" will delete ALL collections and clean program's action history from database
 * -debug program will save CCAL command set to file and would not update database. In addition all program output will go to screen, rather than in syslog
-* -verbose will print some additional information
 
 ### Config file (JSON)
 
