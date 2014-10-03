@@ -228,7 +228,7 @@ func main() {
 	start := time.Now()
 
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "\nKindle auto-lists tool (rupor)\nVersion 0.1\n\n")
+		fmt.Fprintf(os.Stderr, "\nKindle auto-lists tool (rupor)\nVersion 0.2\n\n")
 		fmt.Fprintf(os.Stderr, "Usage: %s [options]\n\n", os.Args[0])
 		flag.PrintDefaults()
 		fmt.Fprintf(os.Stderr, "\n")
