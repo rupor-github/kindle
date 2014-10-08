@@ -1,0 +1,42 @@
+{
+	"items": [
+	{
+		"name": "Collections from folders",
+		"priority": -1,
+		"items": [
+		{
+			"name": "Create collections",
+			"priority": 1,
+			"action": "/mnt/us/accal/bin/kal",
+			"params": "-action=sync",
+			"exitmenu": true,
+			"checked": false,
+			"refresh": false,
+			"status": false,
+			"internal": "status Creating collections..."
+		},
+		{
+			"name": "Save logs",
+			"priority": 2,
+			"action": "showlog >/mnt/us/accal.log",
+			"exitmenu": true,
+			"checked": false,
+			"refresh": false,
+			"status": false,
+			"internal": "status Saving accal logs..."
+		},
+		{
+			"name": "Delete all collections",
+			"priority": 3,
+			"action": "/mnt/us/accal/bin/kal",
+			"params": "-action=clean",
+			"exitmenu": false,
+			"checked": true,
+			"refresh": false,
+			"status": false,
+			"internal": "status Deleting collections..."
+		}
+		]
+	}
+	]
+}

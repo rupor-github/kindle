@@ -1,4 +1,4 @@
-# Kindle PW(1/2) related (experimental and probably temporary)
+# Kindle PW(1/2) related (experimental)
 ======
 
 ### I use Windows (64 bits) for my daily routines and this work may help you to setup cross environment for Go language *targeting Kindle PW2*, including complete usage of *cgo*.
