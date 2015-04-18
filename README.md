@@ -3,7 +3,7 @@
 
 ### I use Windows (64 bits) for my daily routines and this work may help you to setup cross environment for Go language *targeting Kindle PW2*, including complete usage of *cgo*.
 
-* **go_1.3.1** contains command files to setup cross compilation environment to build *Go* itself. 
+* **go_1.4.2** contains command files to setup cross compilation environment to build *Go* itself. 
 * **cross** has self extracting archive with build of Linaro 20140811 toolchain tuned for Kindle PW2 (eglibc 2.12, binutils 2.24, etc) hosted on Windows 64 bits.
 
 In order to have full working Go on Windows 64 bits, targeting **Windows 32/64 bits and Linux ARM** you will need to obtain and setup following tools:
@@ -28,8 +28,7 @@ GOTOOLS
 \---SlikSvn
 ```
 
-Download and unpack [Go 1.3.1 source distribution](https://storage.googleapis.com/golang/go1.3.1.src.tar.gz). 
-Apply [`go_131_windows.patch`](https://github.com/rupor-github/kindle/blob/master/go_1.3.1/go_131_windows.patch) to sources (Patch [description](https://code.google.com/p/go/issues/detail?id=8723)) using regular patch tools.
+Download and unpack [Go 1.4.2 source distribution](https://storage.googleapis.com/golang/go1.4.2.src.tar.gz). 
 
 Now let's assume you have it in `c:\go` and my command files and necessary tools in `c:\gotools`. 
 Then issuing following commands will build development environment:
@@ -42,11 +41,11 @@ ren .\make.bat .\make.orig
 copy c:\gotools\make.cmd .
 
 c:\gotools\buildgo_cross_amd64.cmd windows amd64
-.\make.cmd
+make.cmd
 c:\gotools\buildgo_cross_amd64.cmd windows 386
-.\make.cmd --no-clean
+make.cmd --no-clean
 c:\gotools\buildgo_cross_amd64.cmd linux arm
-.\make.cmd --no-clean
+make.cmd --no-clean
 
 ```
 
