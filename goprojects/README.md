@@ -49,3 +49,5 @@ Currently it takes Kindle CCAL about a minute to update ~300 collections with ~1
 ```
 I would not expect this to work for librarians with many thousands books on devices...
 
+------------------------------------------------------------------------------------------------------------------------------
+As of July 2, 2015 this project is not active any more as there is no non-hardware related kindle jailbreak in sight.
